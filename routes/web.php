@@ -21,7 +21,7 @@ Route::get('/r/{link_token}', 'VisitorController@redirect')->name('linkRedirect'
 
 
 
-Route::get('/', 'StatisticController@index')->name('home');
+Route::get('/', 'StatisticController@index')->name('main');
 
 Route::get('/statistics/{id?}', 'StatisticController@viewStat')->name('linkStatistics');
 
@@ -30,3 +30,9 @@ Route::get('/users{id?}', 'VisitorController@viewUsers')->name('linkUsers');
 
 
 Route::get('/user/{id?}', 'VisitorController@viewUserStat')->name('linkUserStat');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

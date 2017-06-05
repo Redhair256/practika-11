@@ -10,7 +10,7 @@
     <nav class="navbar navbar-default" role="navigation">
       <div class="container">
       <ul class="nav navbar-nav">
-        <li><a href="{{ route('home') }}"><span class="glyphicon glyphicon-home" aria-hidden="false"></span></a></li>
+        <li><a href="{{ route('main') }}"><span class="glyphicon glyphicon-home" aria-hidden="false"></span></a></li>
         <li><a href="{{ route('linkLinks') }}"><span class="glyphicon glyphicon-list" aria-hidden="false"></span> Ссылки</a></li>
         <li><a href="{{ route('linkStatistics') }}"><span class="glyphicon glyphicon-stats" aria-hidden="false"></span> Статистика переходов</a></li>
         <li><a href="{{ route('linkUsers') }}"><span class="glyphicon glyphicon-user" aria-hidden="false"></span> Список пользователей</a></li>
@@ -33,34 +33,34 @@
            </tr>
           </thead>
           <tbody>
-        @if ( $user_id != null )
-          @foreach($users as $user)
-            @if ( $user_id  == $user->id)  
+        @if ( $visitor_id != null )
+          @foreach($visitors as $visitor)
+            @if ( $visitor_id  == $visitor->id)  
               <tr bgcolor="lightgreen">
             @else
               <tr>
             @endif
               <th width=40 class="text-center"><span class="glyphicon glyphicon-user" aria-hidden="false"></span></th>
-              <td><a href="{{ route('linkUserStat', $user->token) }}"> {{ $user->token }} </a></td>
-              <td> {{ $user->browser }} </td>
-              <td> {{ $user->os }} </td>
-              <td> {{ $user->created_at }} </td>
+              <td><a href="{{ route('linkUserStat', $visitor->token) }}"> {{ $visitor->token }} </a></td>
+              <td> {{ $visitor->browser }} </td>
+              <td> {{ $visitor->os }} </td>
+              <td> {{ $visitor->created_at }} </td>
             </tr>
           @endforeach
         @else
-          @foreach($users as $user)
+          @foreach($visitors as $visitor)
             <tr>
               <th width=40 class="text-center"><span class="glyphicon glyphicon-user" aria-hidden="false"></span></th>
-              <td><a href="#"> {{ $user->token }} </a></td>
-              <td> {{ $user->browser }} </td>
-              <td> {{ $user->os }} </td>
-              <td> {{ $user->created_at }} </td>
+              <td><a href="#"> {{ $visitor->token }} </a></td>
+              <td> {{ $visitor->browser }} </td>
+              <td> {{ $visitor->os }} </td>
+              <td> {{ $visitor->created_at }} </td>
             </tr>
           @endforeach
         @endif
         </tbody>
       </table> 
-      <?php echo $users->render(); ?>
+      <?php echo $visitors->render(); ?>
     </div>
     <script type="text/javascript" src= {{ asset('vendor/components/jquery/jquery.min.js') }} ></script>
     <script type="text/javascript" src= {{ asset('vendor/twbs/bootstrap/dist/js/bootstrap.min.js') }} ></script>    

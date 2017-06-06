@@ -30,12 +30,6 @@ Route::get('/users{id?}', 'VisitorController@viewUsers')->name('linkUsers');
 Route::get('/user/{id?}', 'VisitorController@viewUserStat')->name('linkUserStat');
 
 
-Route::get('/logout', function () {
-	Auth::logout();
-	return redirect()->route('home');
-})->name('logout');
-
-
 
 	//Auth::routes();
     // Authentication Routes...
@@ -44,3 +38,9 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/logout', function () { 
+	Auth::logout(); 
+	return redirect()->route('home');
+	})->name('logout');
+

@@ -1,6 +1,7 @@
 <?php
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,17 +17,16 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name'  => 'Sergey',
             'eMail' => 'Redhair20@myahoo.com',
-            'password' => '$2y$10$ko1e9dmsnut9tH0bxa8sTudo4s6bR6kpIu6nW13ub9l7NmukCmWjK',
+            'password' => Hash::make('123456'),
             'remember_token' => '6gYxaB3VHiznHyZm0UkO',
          ]);
-        /*$timeRec = $timeRec +10;
+        $timeRec = $timeRec +10;
         User::create([
-            'name'  => 'Sergey',
-            'eMail' => 'Redhair20@mail.ru',
-            'password' => '',
+            'name'  => 'Roman',
+            'eMail' => 'info@nma.ee',
+            'password' => Hash::make('qwerty'),
             'remember_token' => 'LoZNrlxT2aB386wv27js',
-            'created_at' => date('Y-m-d H:i:s', $timeRec)
-        */
+            'created_at' => date('Y-m-d H:i:s', $timeRec)       
         ]);
     }
 }

@@ -20,6 +20,11 @@ class StatisticController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
 //      !!! При использовании groupBy обязательно установить
@@ -27,7 +32,12 @@ class StatisticController extends Controller
 //
         $numLinks = Link::all()->count();
         $numClicks = Click::all()->count();
-        $averClicks = $numClicks/$numLinks;
+        if ($numLinks != null){
+            $averClicks = $numClicks/$numLinks;
+        }else{
+            $averClicks = '0';
+        }
+
         $uniqClicks = Click::groupBy('visitor_id', 'link_id')->select('id')->get();
         $numUniqClicks = $uniqClicks->count();
         $today = Carbon::now();
@@ -37,8 +47,11 @@ class StatisticController extends Controller
         $tdLinks = Link::whereBetween('created_at', array($startOfDay, $endOfDay))->count();
         $tdUniqClicks = Click::whereBetween('created_at', array($startOfDay, $endOfDay))->groupBy('visitor_id', 'link_id')->select('id')->get();
         $tdNumUniqClicks = $tdUniqClicks->count();
-        $tdAverClicks = $tdClicks/$numLinks;
-
+        if($numLinks != null){
+            $tdAverClicks = $tdClicks/$numLinks;
+        }else{
+            $tdAverClicks = '0';
+        }
 
         return view('links.index', [ 'numLinks' => $numLinks, 
                                      'numClicks' => $numClicks,

@@ -20,6 +20,12 @@ class LinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()   //Защита авторизацией.
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
 //      !!! При использовании groupBy обязательно установить

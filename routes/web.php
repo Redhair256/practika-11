@@ -11,14 +11,12 @@
 |
 */
 
+Route::get('/r/{link_token}', 'RedirectController@redirect')->name('linkRedirect');
+
 
 Route::get('/links', 'LinkController@viewLinks')->name('linkLinks');
 
 Route::post('/create', 'LinkController@create');
-
-Route::get('/r/{link_token}', 'VisitorController@redirect')->name('linkRedirect');
-
-
 
 
 Route::get('/', 'StatisticController@index')->name('main');
@@ -30,6 +28,12 @@ Route::get('/users{id?}', 'VisitorController@viewUsers')->name('linkUsers');
 
 
 Route::get('/user/{id?}', 'VisitorController@viewUserStat')->name('linkUserStat');
+
+
+Route::get('/logout', function () {
+	Auth::logout();
+	return redirect()->route('home');
+})->name('logout');
 
 
 

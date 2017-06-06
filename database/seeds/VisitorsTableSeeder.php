@@ -1,5 +1,5 @@
 <?php
-use App\User_id;
+use App\Visitor;
 use Illuminate\Database\Seeder;
 
 class VisitorsTableSeeder extends Seeder

@@ -38,8 +38,8 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/logout', function () { 
+/*Route::get('/logout', function () { 
 	Auth::logout(); 
 	return redirect()->route('main');
-	})->name('logout');
+	})->name('logout');*/
 

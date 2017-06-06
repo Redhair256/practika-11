@@ -16,12 +16,16 @@
         <li><a href="{{ route('linkUsers') }}"><span class="glyphicon glyphicon-user" aria-hidden="false"></span> Список пользователей</a></li>
         <li><a href="{{ route('linkUserStat') }}"><span class="glyphicon glyphicon-equalizer" aria-hidden="false"></span> Статистика пользователей</a></li>
       </ul>
-      <div align=right>
+      <div align=right valign=center>
         @if (Auth::check())
-          <a href="{{ route('logout') }}"><span class="glyphicon glyphicon-user" aria-hidden="false"></span> Выход/Logout</a>
+          <form action="{{ url('./logout') }}" method="POST">
+          {{ csrf_field() }} <!-- Очень важная строчка!!! Иначе ни черта не работает. -->
+          <button class="btn btn-primary" type="submit" > LogOut <span class="glyphicon glyphicon-arrow-right" aria-hidden="false"></span></button>
+          </form>
         @else
           <a href="{{ route('main') }}"><span class="glyphicon glyphicon-user" aria-hidden="false"></span> Вход/Login</a>
         @endif
+      </div>
       </div>
     </nav>
 

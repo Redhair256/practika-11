@@ -31,7 +31,7 @@ class VisitorController extends Controller
         //
         $visitors = Visitor::orderBy('created_at', 'desc')->paginate($this->stringsPerPage);
     
-        return view('links.visitors',[ 'visitors' => $visitors, 'visitor_id' => $id ] );
+        return view('visitors.index',[ 'visitors' => $visitors, 'visitor_id' => $id ] );
     }
 
     public function viewUserStat($id = '0')
@@ -48,7 +48,7 @@ class VisitorController extends Controller
             $num_link = 0;
         }
         $visitors = Visitor::orderBy('created_at', 'desc')->get(['id', 'token']);
-        return view('links.visitorstat', [ 'visitors' => $visitors, 'curent_visitor' => $curent_visitor, 'clicks' => $clicks, 'num_link' => $num_link ] );
+        return view('visitors.statistic', [ 'visitors' => $visitors, 'curent_visitor' => $curent_visitor, 'clicks' => $clicks, 'num_link' => $num_link ] );
     }
 
 }

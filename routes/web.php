@@ -32,15 +32,14 @@ Route::get('/user/{id?}', 'VisitorController@viewUserStat')->name('linkUserStat'
 
 
 	//Auth::routes();
+	//Route::get('/home', 'HomeController@index')->name('home');
     // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/logout', function () { 
 	Auth::logout(); 
-	return redirect()->route('home');
+	return redirect()->route('main');
 	})->name('logout');
 

@@ -20,7 +20,7 @@
         @if (Auth::check())
           <a href="{{ route('logout') }}"><span class="glyphicon glyphicon-user" aria-hidden="false"></span> Выход/Logout</a>
         @else
-          <a href="{{ route('home') }}"><span class="glyphicon glyphicon-user" aria-hidden="false"></span> Вход/Login</a>
+          <a href="{{ route('main') }}"><span class="glyphicon glyphicon-user" aria-hidden="false"></span> Вход/Login</a>
         @endif
       </div>
     </nav>
